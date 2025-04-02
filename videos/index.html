@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Відеоуроки з CSS Анімації - Академія CSS Анімації</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Головна</a></li>
+                <li><a href="../tutorials/index.html">Уроки</a></li>
+                <li><a href="../examples/index.html">Приклади</a></li>
+                <li><a href="../resources/index.html">Ресурси</a></li>
+            </ul>
+            <button class="get-started-btn">Почати навчання</button>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Головний розділ -->
+    <section class="page-header">
+        <h1>Відеоуроки з CSS Анімації</h1>
+        <p>Навчайтеся візуально з нашими детальними відеоуроками</p>
+    </section>
+
+    <!-- Фільтр відеоуроків -->
+    <section class="video-filter">
+        <div class="container">
+            <div class="filter-options">
+                <button class="filter-btn active" data-filter="all">Усі відео</button>
+                <button class="filter-btn" data-filter="basics">Основи</button>
+                <button class="filter-btn" data-filter="transitions">Переходи</button>
+                <button class="filter-btn" data-filter="keyframes">Ключові кадри</button>
+                <button class="filter-btn" data-filter="transforms">Трансформації</button>
+                <button class="filter-btn" data-filter="advanced">Просунуті техніки</button>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Пошук відеоуроків..." class="search-input">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Список відеоуроків -->
+    <section class="videos-list">
+        <div class="container">
+            <div class="videos-grid">
+                <!-- Основи CSS анімації -->
+                <div class="video-item" data-category="basics">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">10:15</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Вступ до CSS анімації</h3>
+                        <p>Базові поняття та принципи CSS анімації для початківців.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Початковий</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 15.03.2023</span>
+                        </div>
+                        <a href="intro-to-css-animation.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- CSS переходи -->
+                <div class="video-item" data-category="transitions">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">15:24</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Основи CSS переходів</h3>
+                        <p>Як створювати плавні переходи між станами елементів.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Початковий</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 22.03.2023</span>
+                        </div>
+                        <a href="transitions-basics.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- Ключові кадри -->
+                <div class="video-item" data-category="keyframes">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">18:37</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Анімації з ключовими кадрами</h3>
+                        <p>Створення складних анімацій за допомогою @keyframes.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Середній</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 29.03.2023</span>
+                        </div>
+                        <a href="keyframes-basics.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- Трансформації -->
+                <div class="video-item" data-category="transforms">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">20:15</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Трансформації в CSS</h3>
+                        <p>Як використовувати властивості transform для створення ефектів.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Середній</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 05.04.2023</span>
+                        </div>
+                        <a href="transform-basics.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- Функції часу -->
+                <div class="video-item" data-category="transitions">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">14:42</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Функції часу в CSS</h3>
+                        <p>Як контролювати швидкість анімацій за допомогою функцій часу.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Середній</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 12.04.2023</span>
+                        </div>
+                        <a href="timing-functions.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- 3D трансформації -->
+                <div class="video-item" data-category="transforms">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">25:18</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>3D трансформації в CSS</h3>
+                        <p>Створення тривимірних ефектів за допомогою CSS.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Просунутий</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 19.04.2023</span>
+                        </div>
+                        <a href="3d-transforms.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- Анімація SVG -->
+                <div class="video-item" data-category="advanced">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">22:05</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Анімація SVG елементів</h3>
+                        <p>Як анімувати SVG графіку за допомогою CSS.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Просунутий</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 26.04.2023</span>
+                        </div>
+                        <a href="svg-animation.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- Анімація при прокрутці -->
+                <div class="video-item" data-category="advanced">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">19:33</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Анімація при прокрутці</h3>
+                        <p>Створення анімацій, які активуються при прокрутці сторінки.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Просунутий</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 03.05.2023</span>
+                        </div>
+                        <a href="scroll-animations.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+                
+                <!-- Оптимізація анімацій -->
+                <div class="video-item" data-category="advanced">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <span class="video-duration">16:47</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Оптимізація CSS анімацій</h3>
+                        <p>Як створювати продуктивні анімації, які не сповільнюють сайт.</p>
+                        <div class="video-meta">
+                            <span class="video-level"><i class="fas fa-signal"></i> Просунутий</span>
+                            <span class="video-date"><i class="far fa-calendar-alt"></i> 10.05.2023</span>
+                        </div>
+                        <a href="animation-performance.html" class="video-link">Дивитися відео</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Підписка на нові відео -->
+    <section class="video-subscribe">
+        <div class="container">
+            <div class="subscribe-content">
+                <h2>Отримуйте нові відеоуроки</h2>
+                <p>Підпишіться на нашу розсилку, щоб першими дізнаватися про нові відеоуроки з CSS анімації.</p>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Ваш email" required>
+                    <button type="submit" class="btn-primary">Підписатися</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Навчання</h4>
+                    <ul>
+                        <li><a href="../tutorials/index.html">Уроки</a></li>
+                        <li><a href="../examples/index.html">Приклади</a></li>
+                        <li><a href="../resources/index.html">Ресурси</a></li>
+                        <li><a href="../resources/blog.html">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Зв'язок</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://discord.com" target="_blank">Discord</a></li>
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <ul>
+                        <li><a href="../about/story.html">Наша історія</a></li>
+                        <li><a href="../about/team.html">Команда</a></li>
+                        <li><a href="../about/careers.html">Кар'єра</a></li>
+                        <li><a href="../about/contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Академія CSS Анімації. Усі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Додатковий JavaScript для фільтрації відео
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const videoItems = document.querySelectorAll('.video-item');
+            const searchInput = document.querySelector('.search-input');
+            
+            // Фільтрація за категоріями
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Видалити активний клас з усіх кнопок
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Додати активний клас до натиснутої кнопки
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Показати/приховати відео відповідно до фільтра
+                    videoItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Пошук відео
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                videoItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

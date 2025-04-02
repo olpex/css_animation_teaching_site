@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приклади CSS Анімацій - Академія CSS Анімації</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Стилі для анімацій */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 75%; }
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: #3498db;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        .pulse-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #3498db;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .pulse-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .pulse-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #3498db;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        .image-zoom-container {
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: var(--border-radius-large);
+        }
+
+        .image-zoom {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s var(--transition-timing);
+        }
+
+        .image-zoom:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Головна</a></li>
+                <li><a href="../tutorials/index.html">Уроки</a></li>
+                <li><a href="index.html">Приклади</a></li>
+                <li><a href="../resources/index.html">Ресурси</a></li>
+            </ul>
+            <button class="get-started-btn">Почати навчання</button>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Головний розділ -->
+    <section class="page-header">
+        <h1>Приклади CSS Анімацій</h1>
+        <p>Досліджуйте інтерактивні приклади та вивчайте код для створення власних анімацій</p>
+    </section>
+
+    <!-- Категорії прикладів -->
+    <section class="examples-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <a href="#hover-effects" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3>Ефекти наведення</h3>
+                    <p>Анімації, що активуються при наведенні курсора</p>
+                </a>
+
+                <a href="#loading" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <h3>Анімації завантаження</h3>
+                    <p>Індикатори завантаження та прогресу</p>
+                </a>
+
+                <a href="#text" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Анімації тексту</h3>
+                    <p>Креативні ефекти для тексту та заголовків</p>
+                </a>
+
+                <a href="#buttons" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <h3>Кнопки</h3>
+                    <p>Інтерактивні кнопки з анімаціями</p>
+                </a>
+
+                <a href="#cards" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Картки</h3>
+                    <p>Анімовані картки та контейнери</p>
+                </a>
+
+                <a href="#menus" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <h3>Меню та навігація</h3>
+                    <p>Анімовані меню та елементи навігації</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ефекти наведення -->
+    <section id="hover-effects" class="examples-section">
+        <div class="container">
+            <h2>Ефекти наведення</h2>
+            <p class="section-description">Анімації, що активуються при наведенні курсора миші</p>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Кнопка з ефектом підняття</h3>
+                    <div class="example-preview">
+                        <button class="hover-button">Наведіть на мене</button>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.hover-button {
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.hover-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+
+                <div class="example-card">
+                    <h3>Зображення з ефектом масштабування</h3>
+                    <div class="example-preview">
+                        <div class="image-zoom-container">
+                            <div class="image-zoom" role="img" aria-label="Зображення з ефектом масштабування"></div>
+                        </div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.image-zoom-container {
+  overflow: hidden;
+  border-radius: var(--border-radius-large);
+}
+
+.image-zoom {
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s var(--transition-timing);
+}
+
+.image-zoom:hover {
+  transform: scale(1.1);
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+
+                <div class="example-card">
+                    <h3>Підкреслення при наведенні</h3>
+                    <div class="example-preview">
+                        <a href="#" class="underline-link">Наведіть на мене</a>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.underline-link {
+  position: relative;
+  color: #3498db;
+  text-decoration: none;
+}
+
+.underline-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #3498db;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.underline-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}</code></pre>
+                    </div>
+                    <a href="underline-link.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+            </div>
+
+            <div class="more-examples">
+                <a href="hover-button.html" class="btn-primary">Переглянути всі ефекти наведення</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Анімації завантаження -->
+    <section id="loading" class="examples-section">
+        <div class="container">
+            <h2>Анімації завантаження</h2>
+            <p class="section-description">Індикатори завантаження та прогресу для покращення користувацького досвіду</p>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Простий спіннер</h3>
+                    <div class="example-preview">
+                        <div class="spinner" role="status" aria-label="Завантаження..."></div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+
+                <div class="example-card">
+                    <h3>Пульсуючі кружечки</h3>
+                    <div class="example-preview">
+                        <div class="pulse-container" role="status" aria-label="Завантаження...">
+                            <div class="pulse-dot"></div>
+                            <div class="pulse-dot"></div>
+                            <div class="pulse-dot"></div>
+                        </div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.pulse-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pulse-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #3498db;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.pulse-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.pulse-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+
+                <div class="example-card">
+                    <h3>Індикатор прогресу</h3>
+                    <div class="example-preview">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 75%;
+  background-color: #3498db;
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 75%; }
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+            </div>
+
+            <div class="more-examples">
+                <a href="hover-button.html" class="btn-primary">Переглянути всі анімації завантаження</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Анімації тексту -->
+    <section id="text" class="examples-section">
+        <div class="container">
+            <h2>Анімації тексту</h2>
+            <p class="section-description">Креативні ефекти для тексту та заголовків</p>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Хвильовий текст</h3>
+                    <div class="example-preview">
+                        <div class="wave-text">
+                            <span style="--i:1">А</span>
+                            <span style="--i:2">н</span>
+                            <span style="--i:3">і</span>
+                            <span style="--i:4">м</span>
+                            <span style="--i:5">а</span>
+                            <span style="--i:6">ц</span>
+                            <span style="--i:7">і</span>
+                            <span style="--i:8">я</span>
+                        </div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.wave-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.wave-text span {
+  display: inline-block;
+  animation: wave 1.5s infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+
+                <div class="example-card">
+                    <h3>Текст, що друкується</h3>
+                    <div class="example-preview">
+                        <div class="typing-text">
+                            <span>CSS Анімація</span>
+                        </div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.typing-text {
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+.typing-text span {
+  border-right: 2px solid #333;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: typing 3s steps(12) infinite,
+             blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0%, 100% { width: 0 }
+  50%, 90% { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #333 }
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+
+                <div class="example-card">
+                    <h3>Градієнтний текст</h3>
+                    <div class="example-preview">
+                        <div class="gradient-text">Анімація</div>
+                    </div>
+                    <div class="example-code">
+                        <pre><code>.gradient-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(
+    45deg,
+    #f72585,
+    #4361ee,
+    #4cc9f0
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}</code></pre>
+                    </div>
+                    <a href="hover-button.html" class="btn-secondary">Переглянути повний приклад</a>
+                </div>
+            </div>
+
+            <div class="more-examples">
+                <a href="hover-button.html" class="btn-primary">Переглянути всі анімації тексту</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Заклик до дії -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Готові створити власні анімації?</h2>
+            <p>Почніть вивчати CSS анімації з нашими детальними уроками та практичними завданнями.</p>
+            <a href="../tutorials/index.html" class="cta-button">Почати навчання</a>
+        </div>
+        <div class="cta-animation">
+            <div class="floating-element elem1"></div>
+            <div class="floating-element elem2"></div>
+            <div class="floating-element elem3"></div>
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Навчання</h4>
+                    <ul>
+                        <li><a href="../tutorials/index.html">Уроки</a></li>
+                        <li><a href="index.html">Приклади</a></li>
+                        <li><a href="../resources/index.html">Ресурси</a></li>
+                        <li><a href="../resources/blog.html">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Зв'язок</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://discord.com" target="_blank">Discord</a></li>
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <ul>
+                        <li><a href="../about/story.html">Наша історія</a></li>
+                        <li><a href="../about/team.html">Команда</a></li>
+                        <li><a href="../about/careers.html">Кар'єра</a></li>
+                        <li><a href="../about/contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Академія CSS Анімації. Усі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

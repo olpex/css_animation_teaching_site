@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопка з ефектом наведення - Академія CSS Анімації</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Стилі для прикладу */
+        .example-section {
+            padding: 50px 0;
+            background-color: #fafafa;
+        }
+
+        .example-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .example-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .example-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .example-header p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .example-preview {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            padding: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .code-tabs {
+            margin-bottom: 30px;
+        }
+
+        .code-tab-buttons {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .code-tab-btn {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .code-tab-btn.active {
+            background-color: #4361ee;
+            color: white;
+        }
+
+        .code-tab-content {
+            background-color: #282c34;
+            border-radius: 0 4px 4px 4px;
+            overflow: hidden;
+        }
+
+        .code-tab {
+            display: none;
+            padding: 20px;
+        }
+
+        .code-tab.active {
+            display: block;
+        }
+
+        .code-tab pre {
+            margin: 0;
+            color: #abb2bf;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+        }
+
+        .explanation {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .explanation h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .explanation p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .explanation ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .explanation li {
+            margin-bottom: 8px;
+        }
+
+        .variations {
+            margin-top: 50px;
+        }
+
+        .variations h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .variations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .variation-item {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            overflow: hidden;
+            transition: box-shadow var(--transition-speed) var(--transition-timing);
+        }
+
+        .variation-item:hover {
+            box-shadow: var(--elevation-2);
+        }
+
+        .variation-preview {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+            background-color: #f8f9fa;
+        }
+
+        .variation-code {
+            padding: 20px;
+            background-color: #282c34;
+        }
+
+        .variation-code pre {
+            margin: 0;
+            color: #abb2bf;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .related-examples {
+            margin-top: 50px;
+        }
+
+        .related-examples h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .related-examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .related-example-item {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            overflow: hidden;
+            transition: transform var(--transition-speed) var(--transition-timing),
+                        box-shadow var(--transition-speed) var(--transition-timing);
+        }
+
+        .related-example-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--elevation-3);
+        }
+
+        .related-example-preview {
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .related-example-info {
+            padding: 20px;
+        }
+
+        .related-example-info h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .related-example-info p {
+            margin-bottom: 15px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Стилі для кнопок з ефектом наведення - Material Design */
+        .hover-button {
+            padding: 10px 24px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.25px;
+            font-size: 0.875rem;
+            box-shadow: var(--elevation-1);
+            transition: background-color var(--transition-speed) var(--transition-timing),
+                        box-shadow var(--transition-speed) var(--transition-timing),
+                        transform var(--transition-speed) var(--transition-timing);
+            cursor: pointer;
+        }
+
+        .hover-button:hover {
+            background-color: var(--primary-variant);
+            transform: translateY(-3px);
+            box-shadow: var(--elevation-2);
+        }
+
+        /* Варіації кнопок - Material Design */
+        .scale-button {
+            padding: 10px 24px;
+            background-color: var(--primary-variant);
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.25px;
+            font-size: 0.875rem;
+            box-shadow: var(--elevation-1);
+            transition: transform var(--transition-speed) var(--transition-timing),
+                        box-shadow var(--transition-speed) var(--transition-timing);
+            cursor: pointer;
+        }
+
+        .scale-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--elevation-2);
+        }
+
+        .color-button {
+            padding: 10px 24px;
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.25px;
+            font-size: 0.875rem;
+            box-shadow: var(--elevation-1);
+            transition: background-color var(--transition-speed) var(--transition-timing),
+                        color var(--transition-speed) var(--transition-timing),
+                        box-shadow var(--transition-speed) var(--transition-timing);
+            cursor: pointer;
+        }
+
+        .color-button:hover {
+            background-color: white;
+            color: var(--secondary-color);
+            box-shadow: var(--elevation-2);
+        }
+
+        .shadow-button {
+            padding: 10px 24px;
+            background-color: var(--error-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.25px;
+            font-size: 0.875rem;
+            transition: box-shadow var(--transition-speed) var(--transition-timing);
+            cursor: pointer;
+        }
+
+        .shadow-button:hover {
+            box-shadow: 0 0 0 3px rgba(176, 0, 32, 0.3);
+        }
+
+        /* Стилі для прикладу з зображенням */
+        .image-zoom-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: var(--border-radius-large);
+        }
+
+        .image-zoom {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s var(--transition-timing);
+        }
+
+        .image-zoom:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Головна</a></li>
+                <li><a href="../tutorials/index.html">Уроки</a></li>
+                <li><a href="index.html" class="active">Приклади</a></li>
+                <li><a href="../resources/index.html">Ресурси</a></li>
+            </ul>
+            <button class="get-started-btn">Почати навчання</button>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Хлібні крихти -->
+    <div class="container">
+        <ul class="breadcrumbs">
+            <li class="breadcrumbs-item"><a href="../index.html" class="breadcrumbs-link">Головна</a></li>
+            <li class="breadcrumbs-item"><a href="index.html" class="breadcrumbs-link">Приклади</a></li>
+            <li class="breadcrumbs-item"><span class="breadcrumbs-current">Кнопка з ефектом наведення</span></li>
+        </ul>
+    </div>
+
+    <!-- Приклад -->
+    <section class="example-section">
+        <div class="example-container">
+            <div class="example-header">
+                <h1>Кнопка з ефектом наведення</h1>
+                <p>Створення інтерактивної кнопки з ефектом підняття при наведенні курсора</p>
+            </div>
+
+            <div class="example-preview">
+                <button class="hover-button">Наведіть на мене</button>
+            </div>
+
+            <div class="code-tabs">
+                <div class="code-tab-buttons">
+                    <button class="code-tab-btn active" data-tab="html">HTML</button>
+                    <button class="code-tab-btn" data-tab="css">CSS</button>
+                </div>
+                <div class="code-tab-content">
+                    <div class="code-tab active" id="html">
+                        <pre><code>&lt;button class="hover-button"&gt;Наведіть на мене&lt;/button&gt;</code></pre>
+                    </div>
+                    <div class="code-tab" id="css">
+                        <pre><code>.hover-button {
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hover-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h2>Як це працює</h2>
+                <p>Ця кнопка використовує CSS переходи для створення плавного ефекту підняття при наведенні курсора. Ось ключові компоненти:</p>
+
+                <ul>
+                    <li><strong>transition</strong>: Визначає, які властивості будуть анімовані (transform і box-shadow), тривалість анімації (0.3 секунди) та функцію часу (ease).</li>
+                    <li><strong>transform: translateY(-5px)</strong>: При наведенні курсора кнопка піднімається на 5 пікселів вгору.</li>
+                    <li><strong>box-shadow</strong>: Додає тінь під кнопкою, щоб підсилити ефект підняття.</li>
+                </ul>
+
+                <p>Цей ефект створює відчуття, що кнопка "спливає" при наведенні курсора, що робить інтерфейс більш інтерактивним і привабливим для користувача.</p>
+
+                <h3>Переваги використання CSS переходів:</h3>
+                <ul>
+                    <li>Плавна анімація без використання JavaScript</li>
+                    <li>Висока продуктивність завдяки апаратному прискоренню</li>
+                    <li>Простий і зрозумілий код</li>
+                    <li>Покращення користувацького досвіду</li>
+                </ul>
+            </div>
+
+            <div class="variations">
+                <h2>Варіації ефекту</h2>
+                <div class="variations-grid">
+                    <div class="variation-item">
+                        <div class="variation-preview">
+                            <button class="scale-button">Наведіть на мене</button>
+                        </div>
+                        <div class="variation-code">
+                            <pre><code>.scale-button {
+  padding: 12px 24px;
+  background: #9b59b6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.scale-button:hover {
+  transform: scale(1.1);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="variation-item">
+                        <div class="variation-preview">
+                            <button class="color-button">Наведіть на мене</button>
+                        </div>
+                        <div class="variation-code">
+                            <pre><code>.color-button {
+  padding: 12px 24px;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease,
+              color 0.3s ease;
+}
+
+.color-button:hover {
+  background-color: white;
+  color: #2ecc71;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="variation-item">
+                        <div class="variation-preview">
+                            <button class="shadow-button">Наведіть на мене</button>
+                        </div>
+                        <div class="variation-code">
+                            <pre><code>.shadow-button {
+  padding: 12px 24px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-button:hover {
+  box-shadow: 0 0 0 5px rgba(231, 76, 60, 0.4);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-examples">
+                <h2>Пов'язані приклади</h2>
+                <div class="related-examples-grid">
+                    <a href="index.html#hover-effects" class="related-example-item">
+                        <div class="related-example-preview" style="padding: 0;">
+                            <div class="image-zoom-container" style="height: 150px;">
+                                <div class="image-zoom"></div>
+                            </div>
+                        </div>
+                        <div class="related-example-info">
+                            <h3>Зображення з ефектом масштабування</h3>
+                            <p>Ефект збільшення зображення при наведенні курсора</p>
+                        </div>
+                    </a>
+
+                    <a href="underline-link.html" class="related-example-item">
+                        <div class="related-example-preview">
+                            <a href="#" class="underline-link">Наведіть на мене</a>
+                        </div>
+                        <div class="related-example-info">
+                            <h3>Підкреслення при наведенні</h3>
+                            <p>Анімоване підкреслення для посилань</p>
+                        </div>
+                    </a>
+
+                    <a href="index.html#hover-effects" class="related-example-item">
+                        <div class="related-example-preview">
+                            <div class="image-zoom-container" style="height: 80px; width: 120px; background-color: #f8f9fa; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;"></div>
+                        </div>
+                        <div class="related-example-info">
+                            <h3>Картка з ефектом наведення</h3>
+                            <p>Інтерактивна картка з ефектом підняття</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Заклик до дії -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Хочете дізнатися більше про CSS анімації?</h2>
+            <p>Перегляньте наші детальні уроки та вивчіть всі аспекти CSS анімацій.</p>
+            <a href="../tutorials/transitions.html" class="cta-button">Вивчити CSS переходи</a>
+        </div>
+        <div class="cta-animation">
+            <div class="floating-element elem1"></div>
+            <div class="floating-element elem2"></div>
+            <div class="floating-element elem3"></div>
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Навчання</h4>
+                    <ul>
+                        <li><a href="../tutorials/index.html">Уроки</a></li>
+                        <li><a href="index.html">Приклади</a></li>
+                        <li><a href="../resources/index.html">Ресурси</a></li>
+                        <li><a href="../resources/index.html">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Зв'язок</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://discord.com" target="_blank">Discord</a></li>
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <ul>
+                        <li><a href="../index.html">Наша історія</a></li>
+                        <li><a href="../index.html">Команда</a></li>
+                        <li><a href="../index.html">Кар'єра</a></li>
+                        <li><a href="../index.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Академія CSS Анімації. Усі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // JavaScript для вкладок з кодом
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.code-tab-btn');
+            const tabContents = document.querySelectorAll('.code-tab');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Видалити активний клас з усіх кнопок і вкладок
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+
+                    // Додати активний клас до натиснутої кнопки
+                    this.classList.add('active');
+
+                    // Показати відповідну вкладку
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

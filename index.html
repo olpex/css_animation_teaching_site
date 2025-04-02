@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Академія CSS Анімації</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Головна</a></li>
+                <li><a href="tutorials/index.html">Уроки</a></li>
+                <li><a href="examples/index.html">Приклади</a></li>
+                <li><a href="resources/index.html">Ресурси</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <form role="search" aria-label="Пошук по сайту">
+                        <input type="search" class="search-input" placeholder="Пошук..." aria-label="Пошук">
+                        <button type="submit" class="btn-icon search-btn" aria-label="Шукати">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <button class="get-started-btn">Почати навчання</button>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Головний розділ -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Опануйте CSS Анімації</h1>
+            <p>Навчіться створювати вражаючі веб-анімації за допомогою чистого CSS</p>
+            <div class="hero-buttons">
+                <a href="tutorials/index.html" class="primary-btn">Почати навчання</a>
+                <a href="examples/index.html" class="secondary-btn">Переглянути приклади</a>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="animation-box box1"></div>
+            <div class="animation-box box2"></div>
+            <div class="animation-box box3"></div>
+        </div>
+    </section>
+
+    <!-- Розділ переваг -->
+    <section class="features">
+        <h2>Чому варто вивчати CSS анімації?</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Продуктивність</h3>
+                <p>CSS анімації апаратно прискорені та більш продуктивні, ніж JavaScript анімації.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Адаптивність</h3>
+                <p>Створюйте анімації, які ідеально працюють на всіх пристроях та розмірах екранів.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Простий синтаксис</h3>
+                <p>Легко вивчати та впроваджувати завдяки зрозумілим властивостям CSS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Розділ уроків -->
+    <section id="tutorials" class="tutorials">
+        <h2>Уроки з анімації</h2>
+        <div class="tutorial-container">
+            <div class="tutorial-card">
+                <div class="tutorial-preview transition-demo"></div>
+                <div class="tutorial-content">
+                    <h3>CSS переходи</h3>
+                    <p>Навчіться створювати плавні зміни стану за допомогою CSS переходів.</p>
+                    <a href="tutorials/transitions.html" class="tutorial-link">Почати урок <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-preview keyframes-demo"></div>
+                <div class="tutorial-content">
+                    <h3>Анімації з ключовими кадрами</h3>
+                    <p>Опануйте складні анімації з @keyframes для необмежених можливостей.</p>
+                    <a href="tutorials/keyframes.html" class="tutorial-link">Почати урок <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-preview transform-demo"></div>
+                <div class="tutorial-content">
+                    <h3>Властивості трансформації</h3>
+                    <p>Досліджуйте масштабування, обертання, переміщення та нахил.</p>
+                    <a href="tutorials/transform.html" class="tutorial-link">Почати урок <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="tutorial-card">
+                <div class="tutorial-preview timing-demo"></div>
+                <div class="tutorial-content">
+                    <h3>Функції часу</h3>
+                    <p>Контролюйте темп ваших анімацій за допомогою функцій пом'якшення.</p>
+                    <a href="tutorials/timing.html" class="tutorial-link">Почати урок <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Розділ інтерактивних прикладів -->
+    <section id="examples" class="examples">
+        <h2>Інтерактивні приклади</h2>
+        <div class="example-container">
+            <div class="example-tabs">
+                <button class="tab-btn active" data-tab="example1">Ефекти наведення</button>
+                <button class="tab-btn" data-tab="example2">Анімації завантаження</button>
+                <button class="tab-btn" data-tab="example3">Анімації тексту</button>
+            </div>
+            <div class="example-content">
+                <div class="example-tab active" id="example1">
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <pre><code>.hover-button {
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.hover-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <button class="hover-button">Наведіть на мене</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-tab" id="example2">
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <pre><code>.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-tab" id="example3">
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <pre><code>.animated-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.animated-text span {
+  display: inline-block;
+  animation: wave 1.5s infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <div class="animated-text">
+                                <span style="--i:1">А</span>
+                                <span style="--i:2">н</span>
+                                <span style="--i:3">і</span>
+                                <span style="--i:4">м</span>
+                                <span style="--i:5">а</span>
+                                <span style="--i:6">ц</span>
+                                <span style="--i:7">і</span>
+                                <span style="--i:8">я</span>
+                                <span style="--i:10">C</span>
+                                <span style="--i:11">S</span>
+                                <span style="--i:12">S</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Розділ ресурсів -->
+    <section id="resources" class="resources">
+        <h2>Навчальні ресурси</h2>
+        <div class="resources-container">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Документація</h3>
+                <p>Вичерпні посібники та довідкові матеріали для CSS анімацій.</p>
+                <a href="resources/documentation.html" class="resource-link">Переглянути ресурси</a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Відеоуроки</h3>
+                <p>Покрокові відеоуроки для візуального навчання.</p>
+                <a href="videos/index.html" class="resource-link">Дивитися відео</a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Практичні проекти</h3>
+                <p>Реальні проекти для застосування ваших навичок анімації.</p>
+                <a href="resources/projects.html" class="resource-link">Почати проекти</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Заклик до дії -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Готові стати експертом з CSS анімації?</h2>
+            <p>Приєднуйтесь до тисяч студентів, які опанували CSS анімації з нашими вичерпними уроками.</p>
+            <a href="tutorials/index.html" class="cta-button">Почніть свій шлях</a>
+        </div>
+        <div class="cta-animation">
+            <div class="floating-element elem1"></div>
+            <div class="floating-element elem2"></div>
+            <div class="floating-element elem3"></div>
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Навчання</h4>
+                    <ul>
+                        <li><a href="tutorials/index.html">Уроки</a></li>
+                        <li><a href="examples/index.html">Приклади</a></li>
+                        <li><a href="resources/index.html">Ресурси</a></li>
+                        <li><a href="resources/index.html">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Зв'язок</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://discord.com" target="_blank">Discord</a></li>
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <ul>
+                        <li><a href="index.html">Наша історія</a></li>
+                        <li><a href="index.html">Команда</a></li>
+                        <li><a href="index.html">Кар'єра</a></li>
+                        <li><a href="index.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Академія CSS Анімації. Усі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

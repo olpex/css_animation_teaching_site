@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Підкреслення при наведенні - Академія CSS Анімації</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Стилі для сторінки прикладу */
+        .example-section {
+            padding: 50px 0;
+            background-color: var(--background-color);
+        }
+
+        .example-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .example-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .example-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .example-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .example-preview {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            padding: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            transition: box-shadow var(--transition-speed) var(--transition-timing);
+        }
+
+        .example-preview:hover {
+            box-shadow: var(--elevation-2);
+        }
+
+        .code-tabs {
+            margin-bottom: 30px;
+        }
+
+        .code-tab-buttons {
+            display: flex;
+            margin-bottom: 0;
+        }
+
+        .code-tab-btn {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 4px 4px 0 0;
+            transition: background-color var(--transition-speed) var(--transition-timing);
+        }
+
+        .code-tab-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .code-tab-content {
+            background-color: #282c34;
+            border-radius: 0 4px 4px 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code-tab {
+            display: none;
+            padding: 20px;
+        }
+
+        .code-tab.active {
+            display: block;
+        }
+
+        .code-tab pre {
+            margin: 0;
+            color: #abb2bf;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #abb2bf;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) var(--transition-timing);
+        }
+
+        .copy-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .explanation {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .explanation h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: left;
+        }
+
+        .explanation p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .explanation ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .explanation li {
+            margin-bottom: 8px;
+        }
+
+        .variations {
+            margin-top: 50px;
+        }
+
+        .variations h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .variations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .variation-item {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            overflow: hidden;
+            transition: box-shadow var(--transition-speed) var(--transition-timing);
+        }
+
+        .variation-item:hover {
+            box-shadow: var(--elevation-2);
+        }
+
+        .variation-preview {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            min-height: 150px;
+        }
+
+        .variation-code {
+            background-color: #282c34;
+            padding: 15px;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .variation-code pre {
+            margin: 0;
+            color: #abb2bf;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .related-examples {
+            margin-top: 50px;
+        }
+
+        .related-examples h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .related-examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .related-example-item {
+            background-color: white;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--elevation-1);
+            overflow: hidden;
+            transition: transform var(--transition-speed) var(--transition-timing),
+                        box-shadow var(--transition-speed) var(--transition-timing);
+        }
+
+        .related-example-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--elevation-3);
+        }
+
+        .related-example-preview {
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .related-example-info {
+            padding: 20px;
+        }
+
+        .related-example-info h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .related-example-info p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Стилі для прикладів підкреслення */
+        .underline-link {
+            position: relative;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .underline-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s var(--transition-timing);
+        }
+
+        .underline-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Варіації підкреслення */
+        .center-out-link {
+            position: relative;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .center-out-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .center-out-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .grow-up-link {
+            position: relative;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .grow-up-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s var(--transition-timing);
+        }
+
+        .grow-up-link:hover::after {
+            transform: scaleY(1);
+        }
+
+        .dotted-link {
+            position: relative;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .dotted-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-image: linear-gradient(to right, var(--accent-color) 50%, transparent 50%);
+            background-size: 10px 2px;
+            background-repeat: repeat-x;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s var(--transition-timing);
+        }
+
+        .dotted-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Головна</a></li>
+                <li><a href="../tutorials/index.html">Уроки</a></li>
+                <li><a href="index.html" class="active">Приклади</a></li>
+                <li><a href="../resources/index.html">Ресурси</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <form role="search" aria-label="Пошук по сайту">
+                        <input type="search" class="search-input" placeholder="Пошук..." aria-label="Пошук">
+                        <button type="submit" class="btn-icon search-btn" aria-label="Шукати">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <button class="get-started-btn">Почати навчання</button>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Хлібні крихти -->
+    <div class="container">
+        <ul class="breadcrumbs">
+            <li class="breadcrumbs-item"><a href="../index.html" class="breadcrumbs-link">Головна</a></li>
+            <li class="breadcrumbs-item"><a href="index.html" class="breadcrumbs-link">Приклади</a></li>
+            <li class="breadcrumbs-item"><span class="breadcrumbs-current">Підкреслення при наведенні</span></li>
+        </ul>
+    </div>
+
+    <!-- Приклад -->
+    <section class="example-section">
+        <div class="example-container">
+            <div class="example-header">
+                <h1>Підкреслення при наведенні</h1>
+                <p>Створення анімованого підкреслення для посилань при наведенні курсора</p>
+            </div>
+
+            <div class="example-preview">
+                <a href="#" class="underline-link">Наведіть на мене</a>
+            </div>
+
+            <div class="code-tabs">
+                <div class="code-tab-buttons">
+                    <button class="code-tab-btn active" data-tab="html">HTML</button>
+                    <button class="code-tab-btn" data-tab="css">CSS</button>
+                </div>
+                <div class="code-tab-content">
+                    <div class="code-tab active" id="html">
+                        <button class="copy-button">Копіювати</button>
+                        <pre><code>&lt;a href="#" class="underline-link"&gt;Наведіть на мене&lt;/a&gt;</code></pre>
+                    </div>
+                    <div class="code-tab" id="css">
+                        <button class="copy-button">Копіювати</button>
+                        <pre><code>.underline-link {
+  position: relative;
+  color: #78909c;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.underline-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #b0bec5;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.underline-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h2>Як це працює</h2>
+                <p>Цей ефект створює анімоване підкреслення, яке з'являється зліва направо при наведенні курсора на посилання. Ось ключові компоненти:</p>
+
+                <ul>
+                    <li><strong>position: relative</strong>: Встановлює позиціонування для батьківського елемента, щоб псевдоелемент ::after міг бути позиціонований відносно нього.</li>
+                    <li><strong>::after</strong>: Псевдоелемент, який використовується для створення лінії підкреслення.</li>
+                    <li><strong>transform: scaleX(0)</strong>: Початково лінія має нульову ширину (невидима).</li>
+                    <li><strong>transform-origin: right</strong>: Встановлює точку початку трансформації з правого краю.</li>
+                    <li><strong>transition</strong>: Визначає, як анімувати зміну властивості transform.</li>
+                    <li><strong>transform: scaleX(1)</strong>: При наведенні лінія розтягується до повної ширини.</li>
+                    <li><strong>transform-origin: left</strong>: При наведенні змінює точку початку трансформації на лівий край, створюючи ефект "заповнення" зліва направо.</li>
+                </ul>
+
+                <p>Цей ефект створює елегантне анімоване підкреслення, яке привертає увагу користувача та покращує інтерактивність інтерфейсу.</p>
+
+                <h3>Переваги використання цього підходу:</h3>
+                <ul>
+                    <li>Плавна анімація без використання JavaScript</li>
+                    <li>Можливість налаштування товщини, кольору та швидкості анімації</li>
+                    <li>Покращення користувацького досвіду</li>
+                    <li>Сумісність з усіма сучасними браузерами</li>
+                </ul>
+            </div>
+
+            <div class="variations">
+                <h2>Варіації ефекту</h2>
+                <div class="variations-grid">
+                    <div class="variation-item">
+                        <div class="variation-preview">
+                            <a href="#" class="center-out-link">Наведіть на мене</a>
+                        </div>
+                        <div class="variation-code">
+                            <button class="copy-button">Копіювати</button>
+                            <pre><code>.center-out-link {
+  position: relative;
+  color: #78909c;
+  text-decoration: none;
+}
+
+.center-out-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #b0bec5;
+  transition: width 0.3s ease,
+              left 0.3s ease;
+}
+
+.center-out-link:hover::after {
+  width: 100%;
+  left: 0;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="variation-item">
+                        <div class="variation-preview">
+                            <a href="#" class="grow-up-link">Наведіть на мене</a>
+                        </div>
+                        <div class="variation-code">
+                            <button class="copy-button">Копіювати</button>
+                            <pre><code>.grow-up-link {
+  position: relative;
+  color: #78909c;
+  text-decoration: none;
+}
+
+.grow-up-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #b0bec5;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.grow-up-link:hover::after {
+  transform: scaleY(1);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="variation-item">
+                        <div class="variation-preview">
+                            <a href="#" class="dotted-link">Наведіть на мене</a>
+                        </div>
+                        <div class="variation-code">
+                            <button class="copy-button">Копіювати</button>
+                            <pre><code>.dotted-link {
+  position: relative;
+  color: #78909c;
+  text-decoration: none;
+}
+
+.dotted-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    #b0bec5 50%,
+    transparent 50%
+  );
+  background-size: 10px 2px;
+  background-repeat: repeat-x;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.dotted-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-examples">
+                <h2>Пов'язані приклади</h2>
+                <div class="related-examples-grid">
+                    <a href="hover-button.html" class="related-example-item">
+                        <div class="related-example-preview">
+                            <button class="hover-button">Наведіть на мене</button>
+                        </div>
+                        <div class="related-example-info">
+                            <h3>Кнопка з ефектом підняття</h3>
+                            <p>Інтерактивна кнопка з ефектом підняття при наведенні</p>
+                        </div>
+                    </a>
+
+                    <a href="index.html#hover-effects" class="related-example-item">
+                        <div class="related-example-preview">
+                            <div class="image-zoom-container" style="height: 80px; width: 120px;">
+                                <div class="image-zoom"></div>
+                            </div>
+                        </div>
+                        <div class="related-example-info">
+                            <h3>Зображення з ефектом масштабування</h3>
+                            <p>Ефект збільшення зображення при наведенні курсора</p>
+                        </div>
+                    </a>
+
+                    <a href="index.html#text" class="related-example-item">
+                        <div class="related-example-preview">
+                            <div class="wave-text">
+                                <span style="--i:1">А</span>
+                                <span style="--i:2">н</span>
+                                <span style="--i:3">і</span>
+                                <span style="--i:4">м</span>
+                                <span style="--i:5">а</span>
+                                <span style="--i:6">ц</span>
+                                <span style="--i:7">і</span>
+                                <span style="--i:8">я</span>
+                            </div>
+                        </div>
+                        <div class="related-example-info">
+                            <h3>Хвильовий текст</h3>
+                            <p>Анімація тексту з ефектом хвилі</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Заклик до дії -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Хочете дізнатися більше про CSS анімації?</h2>
+            <p>Перегляньте наші детальні уроки та вивчіть всі аспекти CSS анімацій.</p>
+            <a href="../tutorials/transitions.html" class="cta-button">Вивчити CSS переходи</a>
+        </div>
+        <div class="cta-animation">
+            <div class="floating-element elem1"></div>
+            <div class="floating-element elem2"></div>
+            <div class="floating-element elem3"></div>
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Навчання</h4>
+                    <ul>
+                        <li><a href="../tutorials/index.html">Уроки</a></li>
+                        <li><a href="index.html">Приклади</a></li>
+                        <li><a href="../resources/index.html">Ресурси</a></li>
+                        <li><a href="../resources/index.html">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Зв'язок</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://discord.com" target="_blank">Discord</a></li>
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <ul>
+                        <li><a href="../index.html">Наша історія</a></li>
+                        <li><a href="../index.html">Команда</a></li>
+                        <li><a href="../index.html">Кар'єра</a></li>
+                        <li><a href="../index.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Академія CSS Анімації. Усі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // JavaScript для вкладок з кодом
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.code-tab-btn');
+            const tabContents = document.querySelectorAll('.code-tab');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Видалити активний клас з усіх кнопок і вкладок
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+
+                    // Додати активний клас до натиснутої кнопки
+                    this.classList.add('active');
+
+                    // Показати відповідну вкладку
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Функціональність кнопки копіювання коду
+            const copyButtons = document.querySelectorAll('.copy-button');
+
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.nextElementSibling.textContent;
+
+                    navigator.clipboard.writeText(codeBlock).then(() => {
+                        // Змінити текст кнопки на "Скопійовано"
+                        const originalText = this.textContent;
+                        this.textContent = 'Скопійовано!';
+                        this.style.backgroundColor = 'rgba(3, 218, 198, 0.2)';
+
+                        // Повернути оригінальний текст через 2 секунди
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Помилка при копіюванні:', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
