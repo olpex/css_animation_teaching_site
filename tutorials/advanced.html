@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просунуті техніки - Академія CSS Анімації</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Стилі для сторінки уроку - Material Design */
+        .tutorial-header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        /* Стилі для інформаційних блоків */
+        .tutorial-intro {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-lg);
+            background-color: rgba(98, 0, 238, 0.05);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-large);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .tutorial-intro-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-right: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-lg);
+            background-color: rgba(3, 218, 198, 0.05);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-large);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .info-box-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-right: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        /* Стилі для прикладів коду */
+        .code-example {
+            background-color: var(--bg-dark);
+            border-radius: var(--border-radius-large);
+            margin-bottom: var(--space-lg);
+            overflow: hidden;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-darker);
+            padding: var(--space-sm) var(--space-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .copy-button {
+            background-color: transparent;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: var(--border-radius-small);
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .code-content {
+            padding: var(--space-md);
+            overflow-x: auto;
+        }
+
+        .code-content pre {
+            margin: 0;
+            color: var(--text-light);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Стилі для демонстрацій */
+        .demo-container {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-large);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-small);
+        }
+
+        .demo-title {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+            color: var(--text-dark);
+        }
+
+        .demo-description {
+            margin-bottom: var(--space-md);
+            color: var(--text-medium);
+        }
+
+        /* Стилі для практичних завдань */
+        .practice-section {
+            background-color: var(--bg-light);
+            border-radius: var(--border-radius-large);
+            padding: var(--space-lg);
+            margin-top: var(--space-xl);
+            box-shadow: var(--shadow-small);
+        }
+
+        .practice-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+            color: var(--text-dark);
+        }
+
+        .practice-description {
+            margin-bottom: var(--space-lg);
+            color: var(--text-medium);
+        }
+
+        .practice-tasks {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .practice-task {
+            background-color: white;
+            border-radius: var(--border-radius-medium);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-small);
+        }
+
+        .practice-task h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+            color: var(--text-dark);
+        }
+
+        .practice-task p {
+            margin-bottom: var(--space-md);
+            color: var(--text-medium);
+        }
+
+        /* Стилі для навігації по уроках */
+        .tutorial-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .prev-tutorial, .next-tutorial {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .prev-tutorial:hover, .next-tutorial:hover {
+            color: var(--primary-dark);
+        }
+
+        .prev-tutorial i {
+            margin-right: var(--space-sm);
+        }
+
+        .next-tutorial i {
+            margin-left: var(--space-sm);
+        }
+
+        /* Демонстрація для паралакс ефекту */
+        .parallax-demo {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-large);
+            margin-bottom: var(--space-lg);
+        }
+
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .parallax-bg {
+            background-image: url('https://via.placeholder.com/1200x800/3949AB/FFFFFF?text=Background');
+            z-index: 1;
+        }
+
+        .parallax-mid {
+            background-image: url('https://via.placeholder.com/1200x800/1E88E5/FFFFFF?text=Middle+Layer');
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        .parallax-front {
+            background-image: url('https://via.placeholder.com/1200x800/039BE5/FFFFFF?text=Front+Layer');
+            z-index: 3;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навігація -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Головна</a></li>
+                <li><a href="index.html" class="active">Уроки</a></li>
+                <li><a href="../examples/index.html">Приклади</a></li>
+                <li><a href="../resources/index.html">Ресурси</a></li>
+            </ul>
+            <button class="get-started-btn">Почати навчання</button>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Головний розділ уроку -->
+    <section class="tutorial-header">
+        <div class="container">
+            <h1>Просунуті техніки CSS анімації</h1>
+            <p>Вивчіть складні техніки для створення вражаючих анімацій</p>
+        </div>
+    </section>
+
+    <!-- Вміст уроку -->
+    <section class="tutorial-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="tutorial-intro">
+                    <div class="tutorial-intro-icon">
+                        <i class="material-icons">auto_awesome</i>
+                    </div>
+                    <div>
+                        <h2>Просунуті техніки анімації</h2>
+                        <p>У цьому уроці ми розглянемо складніші техніки CSS анімації, які дозволять вам створювати більш вражаючі та інтерактивні ефекти для ваших веб-проектів. Ви дізнаєтесь про анімацію SVG, паралакс ефекти, анімацію при прокрутці та оптимізацію продуктивності.</p>
+                    </div>
+                </div>
+
+                <h2>Анімація SVG</h2>
+                <p>SVG (Scalable Vector Graphics) - це формат векторної графіки, який ідеально підходить для анімації, оскільки він масштабується без втрати якості та має доступ до окремих елементів для анімації.</p>
+
+                <div class="code-example">
+                    <div class="code-header">
+                        <span class="code-title">HTML</span>
+                        <button class="copy-button">
+                            <i class="material-icons">content_copy</i>
+                            <span>Копіювати</span>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>&lt;svg width="200" height="200" viewBox="0 0 200 200"&gt;
+  &lt;circle class="animated-circle" cx="100" cy="100" r="50" fill="none" stroke="#6200ee" stroke-width="4"/&gt;
+&lt;/svg&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <div class="code-header">
+                        <span class="code-title">CSS</span>
+                        <button class="copy-button">
+                            <i class="material-icons">content_copy</i>
+                            <span>Копіювати</span>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>.animated-circle {
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  animation: draw 2s linear forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">
+                        <i class="material-icons">lightbulb</i>
+                    </div>
+                    <div>
+                        <h3>Порада</h3>
+                        <p>Для анімації SVG часто використовуються властивості <code>stroke-dasharray</code> і <code>stroke-dashoffset</code>, які дозволяють створювати ефект малювання ліній.</p>
+                    </div>
+                </div>
+
+                <h2>Паралакс ефекти</h2>
+                <p>Паралакс ефект створює ілюзію глибини, коли різні елементи сторінки рухаються з різною швидкістю при прокрутці.</p>
+
+                <div class="demo-container">
+                    <h3 class="demo-title">Демонстрація паралакс ефекту</h3>
+                    <p class="demo-description">Наведіть курсор на зображення, щоб побачити ефект паралаксу.</p>
+                    <div class="parallax-demo" id="parallaxDemo">
+                        <div class="parallax-layer parallax-bg"></div>
+                        <div class="parallax-layer parallax-mid"></div>
+                        <div class="parallax-layer parallax-front"></div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <div class="code-header">
+                        <span class="code-title">JavaScript</span>
+                        <button class="copy-button">
+                            <i class="material-icons">content_copy</i>
+                            <span>Копіювати</span>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>document.addEventListener('DOMContentLoaded', function() {
+  const parallaxContainer = document.getElementById('parallaxDemo');
+  const layers = parallaxContainer.querySelectorAll('.parallax-layer');
+  
+  parallaxContainer.addEventListener('mousemove', function(e) {
+    const x = e.clientX / parallaxContainer.offsetWidth;
+    const y = e.clientY / parallaxContainer.offsetHeight;
+    
+    layers.forEach((layer, index) => {
+      const speed = (layers.length - index) * 20;
+      const moveX = (x - 0.5) * speed;
+      const moveY = (y - 0.5) * speed;
+      
+      layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+  });
+});</code></pre>
+                    </div>
+                </div>
+
+                <h2>Анімація при прокрутці</h2>
+                <p>Анімація при прокрутці дозволяє запускати анімації, коли елементи з'являються у видимій області екрану.</p>
+
+                <div class="code-example">
+                    <div class="code-header">
+                        <span class="code-title">CSS</span>
+                        <button class="copy-button">
+                            <i class="material-icons">content_copy</i>
+                            <span>Копіювати</span>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <div class="code-header">
+                        <span class="code-title">JavaScript</span>
+                        <button class="copy-button">
+                            <i class="material-icons">content_copy</i>
+                            <span>Копіювати</span>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>document.addEventListener('DOMContentLoaded', function() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  function checkFade() {
+    fadeElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
+      
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('visible');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', checkFade);
+  checkFade(); // Перевірка при завантаженні сторінки
+});</code></pre>
+                    </div>
+                </div>
+
+                <h2>Оптимізація продуктивності</h2>
+                <p>Для забезпечення плавних анімацій важливо оптимізувати їх продуктивність:</p>
+                <ul>
+                    <li><strong>Використовуйте властивості transform і opacity</strong> - вони не викликають перекомпонування сторінки і анімуються найбільш плавно.</li>
+                    <li><strong>Уникайте анімації властивостей, що впливають на компонування</strong> - таких як width, height, margin, padding.</li>
+                    <li><strong>Використовуйте will-change</strong> - для підказки браузеру про елементи, які будуть анімуватися.</li>
+                    <li><strong>Обмежуйте кількість анімованих елементів</strong> - особливо на мобільних пристроях.</li>
+                </ul>
+
+                <div class="code-example">
+                    <div class="code-header">
+                        <span class="code-title">CSS</span>
+                        <button class="copy-button">
+                            <i class="material-icons">content_copy</i>
+                            <span>Копіювати</span>
+                        </button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>.optimized-animation {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Активує апаратне прискорення */
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-icon">
+                        <i class="material-icons">warning</i>
+                    </div>
+                    <div>
+                        <h3>Застереження</h3>
+                        <p>Використовуйте <code>will-change</code> економно, оскільки надмірне використання може призвести до збільшення споживання пам'яті.</p>
+                    </div>
+                </div>
+
+                <!-- Практичні завдання -->
+                <section class="practice-section">
+                    <h2 class="practice-title">Практичні завдання</h2>
+                    <p class="practice-description">Спробуйте застосувати просунуті техніки анімації у наступних завданнях:</p>
+                    <div class="practice-tasks">
+                        <div class="practice-task">
+                            <h3>Завдання 1: Анімація SVG логотипу</h3>
+                            <p>Створіть логотип з використанням SVG та анімуйте його елементи.</p>
+                            <a href="../examples/svg-animation.html" class="btn-secondary">Спробувати</a>
+                        </div>
+                        <div class="practice-task">
+                            <h3>Завдання 2: Паралакс сторінка</h3>
+                            <p>Створіть сторінку з паралакс ефектом при прокрутці.</p>
+                            <a href="../examples/parallax-page.html" class="btn-secondary">Спробувати</a>
+                        </div>
+                        <div class="practice-task">
+                            <h3>Завдання 3: Анімована галерея</h3>
+                            <p>Створіть галерею зображень з анімацією при прокрутці.</p>
+                            <a href="../examples/scroll-gallery.html" class="btn-secondary">Спробувати</a>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="tutorial-navigation">
+                    <a href="keyframes.html" class="prev-tutorial"><i class="fas fa-arrow-left"></i> Анімації з ключовими кадрами</a>
+                    <a href="interactive.html" class="next-tutorial">Інтерактивні анімації <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Підвал -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">CSS</span>
+                <span class="logo-animation">Анімація</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Навчання</h4>
+                    <ul>
+                        <li><a href="index.html">Уроки</a></li>
+                        <li><a href="../examples/index.html">Приклади</a></li>
+                        <li><a href="../resources/index.html">Ресурси</a></li>
+                        <li><a href="../resources/index.html">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Зв'язок</h4>
+                    <ul>
+                        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://discord.com" target="_blank">Discord</a></li>
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <ul>
+                        <li><a href="../about/story.html">Наша історія</a></li>
+                        <li><a href="../about/team.html">Команда</a></li>
+                        <li><a href="../about/careers.html">Кар'єра</a></li>
+                        <li><a href="../about/contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Академія CSS Анімації. Усі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Функціональність кнопки копіювання коду
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyButtons = document.querySelectorAll('.copy-button');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.closest('.code-example').querySelector('code');
+                    const textToCopy = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="material-icons">check</i><span>Скопійовано!</span>';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 2000);
+                    });
+                });
+            });
+
+            // Паралакс ефект
+            const parallaxContainer = document.getElementById('parallaxDemo');
+            if (parallaxContainer) {
+                const layers = parallaxContainer.querySelectorAll('.parallax-layer');
+                
+                parallaxContainer.addEventListener('mousemove', function(e) {
+                    const x = e.clientX / parallaxContainer.offsetWidth;
+                    const y = e.clientY / parallaxContainer.offsetHeight;
+                    
+                    layers.forEach((layer, index) => {
+                        const speed = (layers.length - index) * 20;
+                        const moveX = (x - 0.5) * speed;
+                        const moveY = (y - 0.5) * speed;
+                        
+                        layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
